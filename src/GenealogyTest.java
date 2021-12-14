@@ -131,7 +131,7 @@ class GenealogyTest {
 
         // giving name that is assigned to more than 1 person
         Assertions.assertThrows(RuntimeException.class,()->{
-            genealogy.findPerson("Ben");
+            genealogy.findPerson(name);
         });
 
         // valid name for which a person exists
