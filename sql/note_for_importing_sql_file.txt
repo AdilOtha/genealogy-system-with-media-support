@@ -1,8 +1,9 @@
 I have added 2 SQL files for creating the schema with tables and populating it with data:
 
-1) 3901_Course_Project_B00900955_test.sql
-2) 3901_Course_Project_B00900955_test_2.sql
+1) 3901_Course_Project_B00900955_test.sql (Main file/Primary Source)
+2) 3901_Course_Project_B00900955_test_2.sql (Backup file/Secondary Source)
 
+Please import SQL using file (1) first.
 In case of any errors while importing file (1), please consider trying to import using file (2).
 
 Thank you.
