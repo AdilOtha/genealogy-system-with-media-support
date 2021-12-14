@@ -1,6 +1,11 @@
-
+/**
+ * Defines minimum data and methods that can uniquely identify a file in the database.
+ */
 public class FileIdentifier {
+    // The primary key of the media file in the database
     private int mediaId;
+
+    // the unique location of file
     private String fileLocation;
 
     public FileIdentifier(int mediaId, String fileLocation) {
@@ -16,11 +21,4 @@ public class FileIdentifier {
         return fileLocation;
     }
 
-    public void setMediaId(int mediaId) {
-        this.mediaId = mediaId;
-    }
-
-    public void setFileLocation(String fileLocation) {
-        this.fileLocation = fileLocation;
-    }
 }

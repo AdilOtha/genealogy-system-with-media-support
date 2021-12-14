@@ -5,6 +5,9 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Defines JUnit tests for methods of Genealogy class.
+ */
 class GenealogyTest {
 
     @Test
@@ -446,18 +449,18 @@ class GenealogyTest {
     }
 
     @Test
-    void descendents() {
+    void descendants() {
         Genealogy genealogy = new Genealogy();
 
         // person object as null
         Assertions.assertThrows(IllegalArgumentException.class,()->{
-            genealogy.descendents(null,2);
+            genealogy.descendants(null,2);
         });
 
         // invalid person object
         PersonIdentity person = new PersonIdentity(0,"Adam");
         Assertions.assertThrows(IllegalArgumentException.class,()->{
-            genealogy.descendents(person,2);
+            genealogy.descendants(person,2);
         });
 
         PersonIdentity person2 = genealogy.findPerson("A");
@@ -465,27 +468,27 @@ class GenealogyTest {
 
         // invalid generations
         Assertions.assertThrows(IllegalArgumentException.class,()->{
-            genealogy.descendents(person2,-2);
+            genealogy.descendants(person2,-2);
         });
 
         // invalid generations
-        Set<PersonIdentity> personIdentitySet = genealogy.descendents(person2,0);
+        Set<PersonIdentity> personIdentitySet = genealogy.descendants(person2,0);
         assertNotNull(personIdentitySet);
         assertTrue(personIdentitySet.size()==0);
 
-        // find descendents for a valid person
-        personIdentitySet = genealogy.descendents(person2,2);
+        // find descendants for a valid person
+        personIdentitySet = genealogy.descendants(person2,2);
         assertNotNull(personIdentitySet);
         assertTrue(personIdentitySet.size()>0);
 
 
-        // find descendents for a valid person for generations higher than which exist
-        Set<PersonIdentity> personIdentitySet2 = genealogy.descendents(person2,10);
+        // find descendants for a valid person for generations higher than which exist
+        Set<PersonIdentity> personIdentitySet2 = genealogy.descendants(person2,10);
         assertNotNull(personIdentitySet2);
         assertTrue(personIdentitySet2.size()>0);
 
-        // find descendents for a valid person that has no descendents
-        personIdentitySet = genealogy.descendents(person3,5);
+        // find descendants for a valid person that has no descendents
+        personIdentitySet = genealogy.descendants(person3,5);
         assertNotNull(personIdentitySet);
         assertTrue(personIdentitySet.size()==0);
 
