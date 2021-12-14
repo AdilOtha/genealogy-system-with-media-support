@@ -24,13 +24,17 @@ class GenealogyTest {
             genealogy.addPerson("  ");
         });
 
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+
         // Valid name
-        PersonIdentity person = genealogy.addPerson("Edward");
+        String name = "Edward "+random;
+        PersonIdentity person = genealogy.addPerson(name);
         assertNotNull(person);
         assertTrue(person.getPersonId()>0);
 
         // Duplicate name
-        PersonIdentity person2 = genealogy.addPerson("Edward");
+        PersonIdentity person2 = genealogy.addPerson(name);
         assertNotNull(person2);
         assertTrue(person2.getPersonId()>0 && person.getPersonId()!= person2.getPersonId());
 
@@ -118,8 +122,12 @@ class GenealogyTest {
             genealogy.findPerson("  ");
         });
 
-        genealogy.addPerson("Ben");
-        genealogy.addPerson("Ben");
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+        String name = "Ben "+random;
+
+        genealogy.addPerson(name);
+        genealogy.addPerson(name);
 
         // giving name that is assigned to more than 1 person
         Assertions.assertThrows(RuntimeException.class,()->{
@@ -167,15 +175,16 @@ class GenealogyTest {
             genealogy.addMediaFile("  ");
         });
 
+        double random = Math.random(); // generating random token for unique filename on every test run
+
         // Valid fileLocation
-        double random = Math.random();
-        FileIdentifier fileIdentifier = genealogy.addMediaFile("D:/media/toronto.png"+random);
+        FileIdentifier fileIdentifier = genealogy.addMediaFile("D:/media/toronto-"+random+".png");
         assertNotNull(fileIdentifier);
         assertTrue(fileIdentifier.getMediaId()>0);
 
         // Duplicate fileLocation throws Illegal Argument Exception
         Assertions.assertThrows(IllegalArgumentException.class,()->{
-            genealogy.addMediaFile("D:/media/toronto.png"+random);
+            genealogy.addMediaFile("D:/media/toronto-"+random+".png");
         });
     }
 
@@ -290,16 +299,20 @@ class GenealogyTest {
         // assign tag that already exists
         assertTrue(genealogy.tagMedia(fileIdentifier2,"Travel"));
 
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+
         // assign new tag
-        assertTrue(genealogy.tagMedia(fileIdentifier2,"Computer Science"));
+        String tagName = "Computer Science "+random;
+        assertTrue(genealogy.tagMedia(fileIdentifier2,tagName));
 
         // re-assign new tag
-        assertTrue(genealogy.tagMedia(fileIdentifier2,"Computer Science"));
+        assertTrue(genealogy.tagMedia(fileIdentifier2,tagName));
 
         FileIdentifier fileIdentifier3 = genealogy.findMediaFile("C:/Home/Family/1.png");
 
         // re-assign tag to another file
-        assertTrue(genealogy.tagMedia(fileIdentifier3,"Computer Science"));
+        assertTrue(genealogy.tagMedia(fileIdentifier3,tagName));
 
     }
 
@@ -369,7 +382,7 @@ class GenealogyTest {
         });
 
         double random = Math.random();
-        FileIdentifier fileIdentifier2 = genealogy.addMediaFile("D:/media/vancouver.png"+random);
+        FileIdentifier fileIdentifier2 = genealogy.addMediaFile("D:/media/vancouver-"+random+".png");
 
         // empty attributes map
         Assertions.assertThrows(IllegalArgumentException.class,()->{
@@ -406,10 +419,13 @@ class GenealogyTest {
     void recordChild() {
         Genealogy genealogy = new Genealogy();
 
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+
         PersonIdentity person = new PersonIdentity(0,"Adam");
-        PersonIdentity person2 = genealogy.addPerson("Walter White");
-        PersonIdentity person3 = genealogy.addPerson("Tyler White");
-        PersonIdentity person4 = genealogy.addPerson("Skyler White");
+        PersonIdentity person2 = genealogy.addPerson("Walter White "+random);
+        PersonIdentity person3 = genealogy.addPerson("Tyler White "+random);
+        PersonIdentity person4 = genealogy.addPerson("Skyler White "+random);
         PersonIdentity person5 = genealogy.findPerson("Odin");
 
         // parent object as null
@@ -555,8 +571,11 @@ class GenealogyTest {
             genealogy.recordPartnering(person,person2);
         });
 
-        PersonIdentity person5 = genealogy.addPerson("Jake Black");
-        PersonIdentity person6 = genealogy.addPerson("Rita Grey");
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+
+        PersonIdentity person5 = genealogy.addPerson("Jake Black "+random);
+        PersonIdentity person6 = genealogy.addPerson("Rita Grey "+random);
 
         // record partnership between 2 persons that don't have any previous partnerships or dissolutions
         assertTrue(genealogy.recordPartnering(person5,person6));
@@ -587,8 +606,11 @@ class GenealogyTest {
             genealogy.recordDissolution(person,person2);
         });
 
-        PersonIdentity person5 = genealogy.addPerson("Aaron Red");
-        PersonIdentity person6 = genealogy.addPerson("Alice White");
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+
+        PersonIdentity person5 = genealogy.addPerson("Aaron Red "+random);
+        PersonIdentity person6 = genealogy.addPerson("Alice White "+random);
 
         // record dissolution between 2 persons that don't have any previous partnerships or dissolutions
         assertTrue(genealogy.recordDissolution(person5,person6));
@@ -619,8 +641,11 @@ class GenealogyTest {
             genealogy.findRelation(person,person2);
         });
 
-        PersonIdentity person3 = genealogy.addPerson("Johnny Doe");
-        PersonIdentity person4 = genealogy.addPerson("Jenny Doe");
+        // for testing purpose
+        double random = Math.random(); // generating random token for unique name on every test run
+
+        PersonIdentity person3 = genealogy.addPerson("Johnny Doe "+random);
+        PersonIdentity person4 = genealogy.addPerson("Jenny Doe "+random);
 
         // find relation between 2 unrelated people
         BiologicalRelation biologicalRelation = genealogy.findRelation(person3,person4);
@@ -628,13 +653,21 @@ class GenealogyTest {
 
         PersonIdentity person5 = genealogy.findPerson("Node9");
         PersonIdentity person6 = genealogy.findPerson("Node10");
+        PersonIdentity person7 = genealogy.findPerson("Node2");
 
         // find relation between 2 people part of a family tree
         // degree of cousinship and level of separation is 1 and 0, respectively for this pair of persons
-        // this family tree is depicted in the external documentation
+        // THIS FAMILY TREE IS DEPICTED IN EXTERNAL DOCUMENTATION, PAGE 5
         biologicalRelation = genealogy.findRelation(person5,person6);
         assertNotNull(biologicalRelation);
         assertTrue((biologicalRelation.getCousinship()==1) && (biologicalRelation.getRemoval()==0));
+
+        // find relation between 2 people, one of which is the ancestor of the other
+        biologicalRelation = genealogy.findRelation(person5,person7);
+        assertNotNull(biologicalRelation);
+        assertTrue((biologicalRelation.getCousinship()==-1) && (biologicalRelation.getRemoval()==2));
+
+
     }
 
     @Test
