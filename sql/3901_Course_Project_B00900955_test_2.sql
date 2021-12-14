@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `media_attributes`;
 CREATE TABLE `media_attributes` (
   `media_id` int NOT NULL,
   `attribute_id` int NOT NULL,
-  `attribute_value` varchar(45) NOT NULL,
+  `attribute_value` varchar(200) NOT NULL,
   PRIMARY KEY (`media_id`,`attribute_id`),
   KEY `attribute_type_ref_idx` (`attribute_id`),
   CONSTRAINT `attribute_type_ref` FOREIGN KEY (`attribute_id`) REFERENCES `media_attributes_types` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -261,7 +261,7 @@ DROP TABLE IF EXISTS `person_details`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `person_details` (
   `person_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(100) NOT NULL,
   PRIMARY KEY (`person_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -290,7 +290,11 @@ CREATE TABLE `person_events` (
   `event_type_id` int NOT NULL,
   PRIMARY KEY (`event_id`),
   KEY `event_type_ref_idx` (`event_type_id`),
-  CONSTRAINT `event_type_ref` FOREIGN KEY (`event_type_id`) REFERENCES `event_types` (`event_type_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `person_1_ref_idx` (`person_id_1`),
+  KEY `person_2_ref_idx` (`person_id_2`),
+  CONSTRAINT `event_type_ref` FOREIGN KEY (`event_type_id`) REFERENCES `event_types` (`event_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `person_1_ref` FOREIGN KEY (`person_id_1`) REFERENCES `person_details` (`person_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `person_2_ref` FOREIGN KEY (`person_id_2`) REFERENCES `person_details` (`person_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -314,7 +318,10 @@ DROP TABLE IF EXISTS `person_media`;
 CREATE TABLE `person_media` (
   `person_id` int NOT NULL,
   `media_id` int NOT NULL,
-  PRIMARY KEY (`person_id`,`media_id`)
+  PRIMARY KEY (`person_id`,`media_id`),
+  KEY `media_details_ref_idx` (`media_id`),
+  CONSTRAINT `media_details_ref` FOREIGN KEY (`media_id`) REFERENCES `media_details` (`media_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `person_details_ref` FOREIGN KEY (`person_id`) REFERENCES `person_details` (`person_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -324,7 +331,7 @@ CREATE TABLE `person_media` (
 
 LOCK TABLES `person_media` WRITE;
 /*!40000 ALTER TABLE `person_media` DISABLE KEYS */;
-INSERT INTO `person_media` VALUES (1,1),(2,1),(4,1),(10,1),(15,7),(17,3),(17,7),(24,1),(24,7),(25,2),(25,7),(26,4);
+INSERT INTO `person_media` VALUES (1,1),(2,1),(4,1),(10,1),(24,1),(25,2),(17,3),(26,4),(15,7),(17,7),(24,7),(25,7);
 /*!40000 ALTER TABLE `person_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +344,7 @@ DROP TABLE IF EXISTS `person_notes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `person_notes` (
   `note_id` int NOT NULL AUTO_INCREMENT,
-  `note` varchar(45) DEFAULT NULL,
+  `note` varchar(200) DEFAULT NULL,
   `person_id` int DEFAULT NULL,
   PRIMARY KEY (`note_id`),
   KEY `note_person_id_idx` (`person_id`),
@@ -391,4 +398,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-13 21:35:33
+-- Dump completed on 2021-12-14 10:55:38
