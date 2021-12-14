@@ -9,7 +9,10 @@ public class DBConnection {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/3901_course_project", "root", "root");
+        final String URL = "jdbc:mysql://localhost:3306/3901_course_project_b00900955";
+        final String USERNAME = "root";
+        final String PASSWORD = "root";
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
     }
 }

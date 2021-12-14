@@ -3,23 +3,27 @@ public class BiologicalRelation {
     int degreeOfCousinship;
     int levelOFSeparation;
 
-    public int getDegreeOfCousinship() {
+    public int getCousinship() {
         return degreeOfCousinship;
     }
 
-    public int getLevelOFSeparation() {
+    public int getRemoval() {
         return levelOFSeparation;
     }
 
-    public Boolean recordChild(PersonIdentity parent, PersonIdentity child) {
-        return false;
+    public void setCousinship(int degreeOfCousinship) {
+        this.degreeOfCousinship = degreeOfCousinship;
     }
 
-    public Boolean recordPartnering(PersonIdentity partner1, PersonIdentity partner2) {
-        return false;
+    public void setRemoval(int levelOFSeparation) {
+        this.levelOFSeparation = levelOFSeparation;
     }
 
-    public Boolean recordDissolution( PersonIdentity partner1, PersonIdentity partner2 ){
-        return false;
+    @Override
+    public String toString() {
+        return "BiologicalRelation{" +
+                "degreeOfCousinship=" + degreeOfCousinship +
+                ", levelOFSeparation=" + levelOFSeparation +
+                '}';
     }
 }
