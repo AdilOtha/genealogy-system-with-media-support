@@ -1,4 +1,5 @@
-I have added 2 SQL files for creating the schema with tables and populating it with data:
+I have added 2 SQL files for creating the schema with tables and populating it with data.
+Any one file is enough for creating the schema and populating it with data.
 
 1) 3901_Course_Project_B00900955_test.sql (Main file/Primary Source)
 2) 3901_Course_Project_B00900955_test_2.sql (Backup file/Secondary Source)
