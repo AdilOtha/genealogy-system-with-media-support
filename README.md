@@ -8,7 +8,7 @@ The following project defines a system that connects family tree information wit
 
 The system is implemented using Java to follow Object-Oriented Programming practices. The hierarchy of the family tree is stored in the MySQL database and represents a Directed Acyclic Graph. Algorithms such as Breadth-first Search are used to find ancestors/descendants of an individual and Lowest Common Ancestor to find a biological relationship between a pair of people.
 
-Complete report available here [a link](https://github.com/AdilOtha/genealogy-system-with-media-support/blob/master/docs/CSCI_3901_Course_Project_Documentation_B00900955.pdf)
+Complete report available [here](https://github.com/AdilOtha/genealogy-system-with-media-support/blob/master/docs/CSCI_3901_Course_Project_Documentation_B00900955.pdf)
 
 ## Main Features
 
