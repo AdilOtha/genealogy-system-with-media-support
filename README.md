@@ -1,6 +1,6 @@
 
 
-# A Genealogy System for Family Tree information and Picture Archive
+# Family Tree Database and Picture Archive for Genealogists
 
 ## About the System
 
