@@ -12,8 +12,8 @@ The system is implemented using Java to follow Object-Oriented Programming pract
  
  2. Retrieve Ancestors and Descendants of an Individual.
  3. Find relation between 2 individuals as per the following:
-![Sample Family Tree](https://drive.google.com/file/d/10yYJHkGnPxebTpHjnMNPV3JI8UqemrJY/view?usp=sharing)
-![Finding relation based on "Degree of Cousinship" and "Level of Separation":](https://drive.google.com/file/d/1LJ0tD098B-i6xamqYYQ25U5joaKwXSS3/view?usp=sharing)
+![Sample Family Tree](https://photos.app.goo.gl/JWa7sk2fzJReTXU17)
+![Finding relation based on "Degree of Cousinship" and "Level of Separation":](https://photos.app.goo.gl/oEYX8FY6eTBcYNLr7)
  4. Get respective images of the individual and their ancestors and descendants.
 
 ## Installation Steps
