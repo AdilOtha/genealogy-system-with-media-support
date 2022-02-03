@@ -15,7 +15,6 @@ The system is implemented using Java to follow Object-Oriented Programming pract
  3. Find relation between 2 individuals as per the following:
 
 ![Sample Family Tree](https://i.imgur.com/vDrThyJ.png)
-
 Sample Family Tree
 ![Finding relation based on "Degree of Cousinship" and "Level of Separation":](https://i.imgur.com/JTXaAFI.png)
 Finding relation based on "Degree of Cousinship" and "Level of Separation"
