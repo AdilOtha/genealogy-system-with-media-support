@@ -10,6 +10,8 @@ The system is implemented using Java to follow Object-Oriented Programming pract
 
 Complete report available [here](https://github.com/AdilOtha/genealogy-system-with-media-support/blob/master/docs/CSCI_3901_Course_Project_Documentation_B00900955.pdf)
 
+This project was developed as part of the course CSCI 3901 at Dalhousie University.
+
 ## Main Features
 
  1. Family Tree generation with the ability to add new people to the tree and set their relation with others.
