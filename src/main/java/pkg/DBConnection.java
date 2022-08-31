@@ -1,3 +1,5 @@
+package pkg;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +11,10 @@ public class DBConnection {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/3901_course_project", "root", "root");
+        final String URL = "jdbc:mysql://localhost:3306/3901_course_project_testing";
+        final String USERNAME = "root";
+        final String PASSWORD = "root";
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
     }
 }
